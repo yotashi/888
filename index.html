@@ -35,16 +35,18 @@
             const seqNum = sequence[i];
             const num = inputNumbers[i];
             
-            if (num === 1) {
-                output = "僅有一包";
-                 // Exit the loop since only one output is needed
-            }
+            
 
             const remainder = seqNum % num;
 
-            if (remainder === 0) {
+            if(num ===1){
+                output += `<tr><td>${seqNum}</td><td>${num}</td><td>${num}</td><td>僅有一包</td></tr>`;
+                ｝
+            else if (remainder === 0) {
                 output += `<tr><td>${seqNum}</td><td>${num}</td><td>${seqNum}</td><td>1</td></tr>`;
-            } else {
+            } 
+            
+            else if{
                 const remainderPlusOne = remainder + 1;
                 output += `<tr><td>${seqNum}</td><td>${num}</td><td>${remainder}</td><td>${remainderPlusOne}</td></tr>`;
             }
