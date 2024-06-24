@@ -10,7 +10,7 @@
     <p>內建數列：270, 608, 99, 226, 225, 928, 273, 85, 221, 479, 243, 212, 384, 233</p>
     <form id="inputForm">
         <label for="numbers">請輸入最多14個數字（用空白鍵分隔）:</label><br>
-        <input type="text" id="numbers" name="numbers" pattern="^(\d+\s){0,13}\d+$" required><br><br>
+        <input type="text" id="numbers" name="numbers" pattern="^(\d+\s){0,13}\d+$" title="請輸入最多14個數字，用空白鍵分隔" required><br><br>
         <input type="submit" value="提交">
     </form>
     <h2>輸出結果：</h2>
@@ -30,35 +30,27 @@
 
         let output = "<table border='1'><tr><th>亂數</th><th>輸入數字(包數）</th><th>餘數</th><th>餘數+1</th></tr>";
 
-        for (let i = 0; i < inputNumbers.length; i++) {
-            if (i >= sequence.length) break;
+        for (let i = 0; i < inputNumbers.length && i < sequence.length; i++) {
             const seqNum = sequence[i];
             const num = inputNumbers[i];
-            
-            
 
-            const remainder = seqNum % num;
+            if (num === 1) {
+                output += `<tr><td>${seqNum}</td><td>${num}</td><td>${num}</td><td>僅有一包</td></tr>`;
+            } else {
+                const remainder = seqNum % num;
 
-            if(num ===1){
-                output += `<tr><td>${seqNum}</td><td>${num}</td><td>${num}</td><td>｛僅有一包｝</td></tr>`;
-                ｝
-            else if (remainder === 0) {
-                output += `<tr><td>${seqNum}</td><td>${num}</td><td>${seqNum}</td><td>1</td></tr>`;
-            } 
-            
-            else if{
-                const remainderPlusOne = remainder + 1;
-                output += `<tr><td>${seqNum}</td><td>${num}</td><td>${remainder}</td><td>${remainderPlusOne}</td></tr>`;
+                if (remainder === 0) {
+                    output += `<tr><td>${seqNum}</td><td>${num}</td><td>${seqNum}</td><td>1</td></tr>`;
+                } else {
+                    const remainderPlusOne = remainder + 1;
+                    output += `<tr><td>${seqNum}</td><td>${num}</td><td>${remainder}</td><td>${remainderPlusOne}</td></tr>`;
+                }
             }
         }
 
-        if (output !== -1) {
-            output += "</table>";
-        }
-        
+        output += "</table>";
         document.getElementById('output').innerHTML = output;
     });
-</script>
-
+    </script>
 </body>
 </html>
