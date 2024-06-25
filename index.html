@@ -28,10 +28,14 @@
             return;
         }
 
+        // 隨機選取起始位置，但要確保剩餘數列的長度足以容納輸入數字的個數
+        const maxStartIndex = sequence.length - inputNumbers.length;
+        const startIndex = Math.floor(Math.random() * (maxStartIndex + 1));
+
         let output = "<table border='1'><tr><th>亂數</th><th>輸入數字(包數）</th><th>餘數</th><th>餘數+1</th></tr>";
 
-        for (let i = 0; i < inputNumbers.length && i < sequence.length; i++) {
-            const seqNum = sequence[i];
+        for (let i = 0; i < inputNumbers.length; i++) {
+            const seqNum = sequence[startIndex + i];
             const num = inputNumbers[i];
 
             if (num === 1) {
