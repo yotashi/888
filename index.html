@@ -7,10 +7,10 @@
 </head>
 <body>
     <h1>數列處理</h1>
-    <p>內建數列：270, 608, 99, 226, 225, 928, 273, 85, 221, 479, 243, 212, 384, 233</p>
+    <p>內建數列：270, 608, 99, 226, 225, 928, 273, 858, 221, 479, 243, 212, 384, 233,569,92,572,410,700,651,596,237,954,252,671,495,928,465,430,730,137,235,154,714,114,506,375,139,77</p>
     <form id="inputForm">
-        <label for="numbers">請輸入最多14個數字（用空白鍵分隔）:</label><br>
-        <input type="text" id="numbers" name="numbers" pattern="^(\d+\s){0,13}\d+$" title="請輸入最多14個數字，用空白鍵分隔" required><br><br>
+        <label for="numbers">請輸入最多39個數字（用空白鍵分隔）:</label><br>
+        <input type="text" id="numbers" name="numbers" pattern="^(\d+\s){0,13}\d+$" title="請輸入最多39個數字，用空白鍵分隔" required><br><br>
         <input type="submit" value="提交">
     </form>
     <h2>輸出結果：</h2>
@@ -20,11 +20,11 @@
     document.getElementById('inputForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const sequence = [270, 608, 99, 226, 225, 928, 273, 85, 221, 479, 243, 212, 384, 233];
+        const sequence = [270, 608, 99, 226, 225, 928, 273 ,858,221, 479, 243, 212, 384, 233,569,92,572,410,700,651,596,237,954,252,671,495,928,465,430,730,137,235,154,714,114,506,375,139,77];
         const inputNumbers = document.getElementById('numbers').value.trim().split(/\s+/).map(Number);
 
-        if (inputNumbers.length > 14) {
-            alert("最多輸入14個數字！");
+        if (inputNumbers.length > 39) {
+            alert("最多輸入39個數字！");
             return;
         }
 
