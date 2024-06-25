@@ -4,23 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>數列處理</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+        }
+        table {
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <h1>數列處理</h1>
-    <p>內建數列：270, 608, 99, 226, 225, 928, 273, 858, 221, 479, 243, 212, 384, 233, 569, 92, 572, 410, 700, 651, 596, 237, 954, 252, 671, 495, 928, 465, 430, 730, 137, 235, 154, 714, 114, 506, 375, 139, 77</p>
+    <button id="toggleSequence">顯示/隱藏 內建數列</button>
+    <div id="sequenceContainer" class="hidden">
+        <p>內建數列：</p>
+        <table>
+            <tr>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+                <th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th>
+                <th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th>
+                <th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th>
+                <th>27</th><th>28</th><th>29</th><th>30</th><th>31</th><th>32</th>
+                <th>33</th><th>34</th><th>35</th><th>36</th><th>37</th><th>38</th><th>39</th>
+            </tr>
+            <tr>
+                <td>270</td><td>608</td><td>99</td><td>226</td><td>225</td><td>928</td><td>273</td>
+                <td>858</td><td>221</td><td>479</td><td>243</td><td>212</td><td>384</td><td>233</td>
+                <td>569</td><td>92</td><td>572</td><td>410</td><td>700</td><td>651</td>
+                <td>596</td><td>237</td><td>954</td><td>252</td><td>671</td><td>495</td>
+                <td>928</td><td>465</td><td>430</td><td>730</td><td>137</td><td>235</td>
+                <td>154</td><td>714</td><td>114</td><td>506</td><td>375</td><td>139</td><td>77</td>
+            </tr>
+        </table>
+    </div>
     <form id="inputForm">
         <label for="numbers">請輸入最多39個數字（用空白鍵分隔）:</label><br>
-        <input type="text" id="numbers" name="numbers" pattern="^(\d+\s){0,13}\d+$" title="請輸入最多39個數字，用空白鍵分隔" required><br><br>
+        <input type="text" id="numbers" name="numbers" pattern="^(\d+\s){0,38}\d+$" title="請輸入最多39個數字，用空白鍵分隔" required><br><br>
         <input type="submit" value="提交">
     </form>
     <h2>輸出結果：</h2>
     <div id="output"></div>
 
     <script>
+    document.getElementById('toggleSequence').addEventListener('click', function() {
+        const sequenceContainer = document.getElementById('sequenceContainer');
+        sequenceContainer.classList.toggle('hidden');
+    });
+
     document.getElementById('inputForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const sequence = [270, 608, 99, 226, 225, 928, 273 ,858,221, 479, 243, 212, 384, 233,569,92,572,410,700,651,596,237,954,252,671,495,928,465,430,730,137,235,154,714,114,506,375,139,77];
+        const sequence = [270, 608, 99, 226, 225, 928, 273, 858, 221, 479, 243, 212, 384, 233, 569, 92, 572, 410, 700, 651, 596, 237, 954, 252, 671, 495, 928, 465, 430, 730, 137, 235, 154, 714, 114, 506, 375, 139, 77];
         const inputNumbers = document.getElementById('numbers').value.trim().split(/\s+/).map(Number);
 
         if (inputNumbers.length > 39) {
